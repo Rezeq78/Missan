@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends 'missan_app/base.html' %}
+{% load static %}
+{% block body_block %}
+<div class="container">
+<div class="jumbotron">
+
+    <form enctype="multipart/form-data" method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+      {{ add_driver }}
+    </div>
+      <input type="submit" name="" value="Insert">
+    </form>
+    </form>
+
+</div>
+</div>
+  {% endblock %}

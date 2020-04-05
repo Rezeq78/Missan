@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+        {% extends 'missan_app/base.html' %}
+        {% load static %}
+        {% block body_block %}
+                      <br>
+                      <div class="container" align="right">
+                        {% if driver_form.errors %}
+                            <ul>
+                            {% for field in driver_form %}
+                                  {% for error in field.errors %}
+                                        <!-- <div class="alert alert-danger"> -->
+                                            <div style="color:red;"><li>{{ error|escape}}</li></div>
+                                        <!-- </div> -->
+                                  {% endfor %}
+                            </ul>
+                            {% endfor %}
+                            {% for error in driver_form.non_field_errors %}
+                                    <!-- <div class="alert alert-danger"> -->
+                                        <div color="red">{{ error|escape }} </div>
+                                    <!-- </div> -->
+                            {% endfor %}
+                        {% endif %}
+                        {% if expiry_date_iqama_driver_license %}
+                        <ul>
+                        <div style="color:red;"><li>{{ expiry_date_iqama_driver_license }}</li></div>
+                        </ul>
+                        {% endif %}
+                      </div>
+
+            <br>
+              <div class="container">
+                <div class="jumbotron">
+                  <form action="{% url 'missan_app:add_driver' %}" method="post">
+                    {% csrf_token %}
+                            <div class="input-group">
+                                <label for="">الإسم :</label>
+                                <input type="text" name="first_name" class="form-control" required>
+                                <input type="text" name="second_name" class="form-control">
+                                <input type="text" name="fourth_name" class="form-control">
+                                <input type="text" name="last_name" class="form-control" required>
+                              </div>
+                              <br>
+                              <div class="input-group">
+
+                                  <label for="iqama_number">رقم الإقامة: </label>
+                                  <input type="text" name="iqama_number"  class="form-control" required maxlength="10">
+                                  <label for="iqama_expiry_date">تاريخ إنتهاء الإقامة :</label>
+                                  <input type="date" name="iqama_expiry_date" class="form-control" required>
+                                  <label for="driver_license_expiry_date">تاريخ إنتهاء الرخصة :</label>
+                                  <input type="date" name="driver_license_expiry_date" class="form-control" required>
+                                </div>
+                                <br>
+                                <div class="input-group">
+                                    <label for="sponsor_name">اسم الكفيل :</label>
+                                    <input type="text" name="sponsor_name" class="form-control" required>
+                                    <label for="joining_date">تاريخ مباشرة العمل :</label>
+                                    <input type="date" name="joining_date" class="form-control" required>
+                                    <label for="city">المدينة :</label>
+                                    <input type="text" name="city" class="form-control" required>
+                                  </div>
+                                  <br>
+                                  <div class="input-group">
+                                      <label for="area">الحي :</label>
+                                      <input type="text" name="area" class="form-control" required>
+                                      <label for="street">اسم الشارع :</label>
+                                      <input type="text" name="street" class="form-control" required>
+                                    </div>
+                                    <br>
+                                    <div class="input-group">
+                                        <label for="car_type">نوع السيارة :</label>
+                                        <input type="text" name="car_type" class="form-control" required>
+                                        <label for="car_plate_number">رقم اللوحة :</label>
+                                        <input type="text" name="car_plate_number" class="form-control" required>
+                                        <label for="car_color">لون السيارة :</label>
+                                        <input type="text" name="car_color" class="form-control" required>
+                                        <label for="car_model">سنة الصنع</label>
+                                        <input type="text" name="car_model" class="form-control" required maxlength="4">
+                                      </div>
+                                      <br>
+                                    <div class="input-group">
+                                      <label for="current_application">التطبيق الحالي :</label>
+                                      <input type="text" name="current_application" class="form-control">
+                                      <label for="previous_application">التطبيق السابق :</label>
+                                      <input type="text" name="previous_application" class="form-control">
+                                      <label for="knows_aout_us">كيف عرفتنا</label>
+                                      <input type="text" name="knows_aout_us" class="form-control">
+                                    </div>
+                                    <br>
+                                    <button  type="submit" class="btn  btn-primary btn-lg btn-block" >إضافة</button>
+                  </form>
+                </div>
+              </div>
+        {% endblock %}

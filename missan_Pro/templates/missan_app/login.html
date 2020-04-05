@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <title>تسجيل الدخول إلى نظام ميسان</title>
+    <link rel="stylesheet" href="{% static "bootstrap-4.3.1-dist/css/bootstrap.min.css" %}">
+  </head>
+  <body>
+        <br>
+          <div class="container">
+          <div class="row">
+          <img src="{% static "images/MissanLogo.png" %}" class="img-fluid" alt="Responsive image"  height="100" width="300"></td>
+          </div>
+          </div>
+        <br>
+
+      <div align="right">
+      <div class="container">
+      <div class="jumbotron">
+                <form action="{% url 'missan_app:user_login' %}" method="post">
+                  {% csrf_token %}
+                    <div class="form-group">
+                      <h4><label for="exampleInputEmail1" style="font-family:areal;">اسم المستخدم</label></h4>
+                      <input type="text" class="form-control" id="exampleInputEmail1" name="username">
+                      <small id="emailHelp" class="form-text text-muted">في حدوث اي مشكلة يرجى الاتصال بمدير النظام وشكراً ..</small>
+                    </div>
+                    <div class="form-group">
+                    <h4>  <label for="exampleInputPassword1" style="font-family:areal;">الرقم السري</label></h4>
+                      <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">دخول</button>
+                </form>
+        </div>
+        </div>
+        </div>
+  </body>
+</html>
